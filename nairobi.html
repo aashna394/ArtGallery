@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nairobi Art Gallery</title>
+	<link rel="stylesheet" href="nystyle.css">
+</head>
+<body>
+	<div class="header">
+  <h1 class="title">Nairobi Art Gallery</h1>
+</div>
+<div id="navbar">
+  <a class="active" href="main.html">Home</a>
+  <div class="dropdown">
+	  <button onclick="myFunction()" class="dropbtn">Contact Us</button>
+	  <div id="myDropdown" class="dropdown-content">
+		<span>phone no: +254-20343096</span>
+		<span>email: nairobi.gallery@art.in</span>
+		<span>Next To Tembo Hse Moi Ave, 70090-00400 Tom Mboya St, Nairobi, Kenya</span>
+	  </div>
+	</div>
+</div>
+<p>Welcome to Nairobi</p>
+<img src="nagal.jpeg" width=100% height=100%>
+	<div class="events">
+		<p>The photography exhibition in Nairobi showcases the works of both local and international photographers, featuring a range of styles and subjects. This exhibition offers a platform for emerging photographers to share their talents and unique perspectives on contemporary African photography. Visitors can experience the vibrant and diverse photography scene in Nairobi and explore the city's cultural identity through this exhibition.</p>
+	</div>
+	<h2><center>Today's featured Artist: Syowia Kyambi</center></h2>
+	<div class="container">
+		<div class="item">
+			<img src="gg.jpg" alt="Artwork 1">
+			<h2><center>The Green Gold</center></h2>
+			<button class="button" href="#" onclick="show('popup')">Details</button>
+			<div class="popup" id="popup">
+				<h2><center>
+				Syowia Kyambi(2019)<br>Rusted mild steel, sisal, paper, ink, glass bottle, nails, video projection, and sound<br>180 x 250 x 300 cm
+				</center></h2>
+				<a href="#" onclick="hide('popup')">Close</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		$ = function(id) 
+		{
+			return document.getElementById(id);
+		}
+
+		var show = function(id) {
+			$(id).style.display ='block';
+		}
+		var hide = function(id) {
+			$(id).style.display ='none';
+		}
+		function myFunction() {
+		  document.getElementById("myDropdown").classList.toggle("show");
+		}
+
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbtn')) {
+			var dropdowns = document.getElementsByClassName("dropdown-content");
+			var i;
+			for (i = 0; i < dropdowns.length; i++) {
+			  var openDropdown = dropdowns[i];
+			  if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+			  }
+			}
+		  }
+		}
+	</script>
+</body>
+</html>

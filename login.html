@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <link rel='stylesheet'><link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="login-form">
+  <form name="reg" action="main.html">
+    <h1>Login</h1>
+    <div class="content">
+      <div class="input-field">
+        <input type="text" placeholder="user name" name = "uname" onblur="validate();" id="name">
+      </div>
+      <div class="input-field">
+        <input type="password" placeholder="Password" name = "password" onblur="CheckPassword();" id="password">
+      </div>
+	  <div class="input-field">
+        <input type="password" placeholder="re-enter password" name = "confirmpassword" onblur="passCheck();">
+      </div>
+      <span id='f'></span>
+    </div>
+	
+    <div class="action">
+      <button type="submit" onclick="return register();" value="submit">Register</button>
+	  <button onclick="return login();">Sign In</button>
+    </div>
+  </form>
+</div>
+  <script>
+		nFlag=0;
+		pFlag=0;
+		cpFlag=0;
+        function validate()
+        {
+            if(reg.uname.value=="")
+            {
+                f.innerText = "*User name reqired";
+                f.className = "error";
+				nFlag=0;
+            }
+            else{
+                f.innerText="";
+				nFlag=1;
+            } 
+        }
+		function CheckPassword() 
+		{ 
+			var passwordPattern = /(?=.*\d)(?=.*\w)(?=.*[a-z])(?=.*[A-Z]).{7,15}$/;
+			if(reg.password.value.search(passwordPattern)!= -1) 
+			{ 
+				f.innerText="";
+				f.className="error";
+				pFlag=1;
+			}
+			else
+			{ 
+				f.innerText="*Password must contain at least 8 characters, lowercase and uppercase letters.";
+				f.className="error";
+				pFlag=0;
+			}
+		}
+		function passCheck(){
+			if(reg.password.value != reg.confirmpassword.value)
+            {
+                f.innerText = "*Passwords do not match";
+                f.className = "error";
+				cpFlag=0;
+            }
+            else{
+				f.innerText="";
+				f.className="error";
+				cpFlag=1;
+			}
+		}
+		function register(){
+			if(nFlag==1 && pFlag==1 &&cpFlag==1){
+				var name = document.getElementById('name').value;
+				localStorage.setItem('name', name);
+				
+				var password = document.getElementById('password').value;
+				localStorage.setItem('password', password);
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		function login(){
+			var name1 = localStorage.getItem('name');
+			var name = document.getElementById('name').value;
+			
+			var password1 = localStorage.getItem('password');
+			var password = document.getElementById('password').value;
+			
+			if(name1==name && password1==password){
+				return true;
+			}
+			else{ return false;}
+		}
+    </script>
+</body>
+</html>
